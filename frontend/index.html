@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AI Crop Advisor - Smart Farming Solutions</title>
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="module" src="./index.jsx"></script>
+    </body>
+</html>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="organicMatter" class="form-label">Organic Matter %</label>
+                                    <input type="number" id="organicMatter" class="form-control" min="0" max="100" step="0.1" value="2.5">
+                                </div>
+                                <div class="form-group">
+                                    <label for="soilType" class="form-label">Soil Type</label>
+                                    <select id="soilType" class="form-control">
+                                        <option value="loamy">Loamy</option>
+                                        <option value="clay">Clay</option>
+                                        <option value="sandy">Sandy</option>
+                                        <option value="silty">Silty</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn--primary">Analyze Soil</button>
+                        </form>
+                    </div>
+
+                    <div id="soilResults" class="soil-results hidden">
+                        <h3>Analysis Results</h3>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <span class="result-label">Soil Health Score:</span>
+                                <span class="result-value" id="healthScore">85/100</span>
+                                <span class="status status--success">Good</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Fertility Level:</span>
+                                <span class="result-value" id="fertilityLevel">High</span>
+                                <span class="status status--success">Optimal</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Recommended Action:</span>
+                                <span class="result-value" id="recommendedAction">Add organic matter</span>
+                            </div>
+                        </div>
+                        <div id="soilRecommendations" class="recommendations">
+                            <h4>Improvement Recommendations:</h4>
+                            <ul id="soilTips">
+                                <li>Maintain current pH levels</li>
+                                <li>Consider adding compost to increase organic matter</li>
+                                <li>Monitor nitrogen levels regularly</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Crop Recommendation Section -->
+        <main id="crops" class="section">
+            <div class="container">
+                <h2>Crop Recommendation System</h2>
+                <div class="crop-recommendation">
+                    <div class="input-section">
+                        <form id="cropForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="season" class="form-label">Season</label>
+                                    <select id="season" class="form-control">
+                                        <option value="kharif">Kharif (Monsoon)</option>
+                                        <option value="rabi">Rabi (Winter)</option>
+                                        <option value="summer">Summer</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="farmSize" class="form-label">Farm Size (hectares)</label>
+                                    <input type="number" id="farmSize" class="form-control" min="0.1" step="0.1" value="2.5">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="budget" class="form-label">Budget (₹)</label>
+                                    <input type="number" id="budget" class="form-control" min="1000" value="50000">
+                                </div>
+                                <div class="form-group">
+                                    <label for="experience" class="form-label">Farming Experience</label>
+                                    <select id="experience" class="form-control">
+                                        <option value="beginner">Beginner (0-2 years)</option>
+                                        <option value="intermediate">Intermediate (3-7 years)</option>
+                                        <option value="expert">Expert (8+ years)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn--primary">Get Crop Recommendations</button>
+                        </form>
+                    </div>
+
+                    <div id="cropResults" class="crop-results hidden">
+                        <h3>Recommended Crops</h3>
+                        <div id="cropRecommendations" class="crop-list">
+                            <!-- Crop recommendations will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Market Prices Section -->
+        <main id="market" class="section">
+            <div class="container">
+                <h2>Market Prices</h2>
+                <div class="market-controls">
+                    <select id="marketLocation" class="form-control">
+                        <option value="delhi">Delhi</option>
+                        <option value="mumbai">Mumbai</option>
+                        <option value="kolkata">Kolkata</option>
+                        <option value="chennai">Chennai</option>
+                        <option value="punjab">Punjab</option>
+                    </select>
+                    <button id="refreshPrices" class="btn btn--primary">Refresh Prices</button>
+                </div>
+                
+                <div class="price-alerts">
+                    <h3>Price Alerts</h3>
+                    <div class="alert-item">
+                        <span class="alert-text">Rice prices increased by 5% in Delhi market</span>
+                        <span class="alert-time">2 hours ago</span>
+                    </div>
+                </div>
+
+                <div class="price-table">
+                    <table id="pricesTable">
+                        <thead>
+                            <tr>
+                                <th>Crop</th>
+                                <th>Current Price</th>
+                                <th>Previous Price</th>
+                                <th>Change</th>
+                                <th>Trend</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pricesTableBody">
+                            <!-- Market prices will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+
+        <!-- IoT Sensors Section -->
+        <main id="sensors" class="section">
+            <div class="container">
+                <h2>IoT Sensor Data</h2>
+                <div class="sensor-status">
+                    <div class="status-indicator online">
+                        <span class="indicator"></span>
+                        <span>Sensors Online</span>
+                    </div>
+                    <div class="last-update">
+                        Last Update: <span id="lastUpdate">Just now</span>
+                    </div>
+                </div>
+
+                <div class="sensor-grid">
+                    <div class="sensor-card">
+                        <h3>Soil Moisture</h3>
+                        <div class="sensor-value">
+                            <span class="value" id="soilMoisture">45%</span>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 45%"></div>
+                            </div>
+                        </div>
+                        <div class="sensor-status">
+                            <span class="status status--success">Normal</span>
+                        </div>
+                    </div>
+
+                    <div class="sensor-card">
+                        <h3>Air Temperature</h3>
+                        <div class="sensor-value">
+                            <span class="value" id="airTemp">28°C</span>
+                            <div class="temp-gauge">
+                                <div class="gauge-fill" style="height: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="sensor-status">
+                            <span class="status status--info">Optimal</span>
+                        </div>
+                    </div>
+
+                    <div class="sensor-card">
+                        <h3>Soil pH</h3>
+                        <div class="sensor-value">
+                            <span class="value" id="sensorPH">6.2</span>
+                            <div class="ph-indicator">
+                                <div class="ph-scale"></div>
+                                <div class="ph-marker" style="left: 62%"></div>
+                            </div>
+                        </div>
+                        <div class="sensor-status">
+                            <span class="status status--success">Good</span>
+                        </div>
+                    </div>
+
+                    <div class="sensor-card">
+                        <h3>Light Intensity</h3>
+                        <div class="sensor-value">
+                            <span class="value" id="lightLevel">850 lux</span>
+                            <div class="light-meter">
+                                <div class="light-bar" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="sensor-status">
+                            <span class="status status--success">High</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sensor-chart">
+                    <h3>24-Hour Sensor Trends</h3>
+                    <canvas id="sensorChart"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner hidden">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Voice Interface -->
+    <div id="voiceInterface" class="voice-interface hidden">
+        <div class="voice-content">
+            <div class="voice-icon">🎤</div>
+            <p id="voiceStatus">Listening...</p>
+            <button id="stopVoice" class="btn btn--secondary">Stop</button>
+        </div>
+    </div>
+
+    <!-- Notifications -->
+    <div id="notifications" class="notifications"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
